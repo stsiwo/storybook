@@ -25,6 +25,7 @@
     "@storybook/addon-storyshots": "^4.0.12",
     "@storybook/react": "^4.0.12",
     "@types/jest": "^23.3.10",
+    "@types/react-test-renderer": "^16.0.3",
     "@types/storybook__addon-storyshots": "^3.4.3",
     "@types/storybook__react": "^4.0.0",
     "awesome-typescript-loader": "^5.2.1",
