@@ -1,4 +1,7 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
+import { withNotes } from '@storybook/addon-notes';
+
+addDecorator(withNotes);
 
 const req = require.context('../stories/', true, /\.story\.tsx?$/);
 
