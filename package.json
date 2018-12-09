@@ -22,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@storybook/addon-info": "^4.0.12",
+    "@storybook/addon-storyshots": "^4.0.12",
     "@storybook/react": "^4.0.12",
     "@types/jest": "^23.3.10",
     "@types/storybook__react": "^4.0.0",
