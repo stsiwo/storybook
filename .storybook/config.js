@@ -3,7 +3,7 @@ import { withNotes } from '@storybook/addon-notes';
 
 addDecorator(withNotes);
 
-const req = require.context('../stories/', true, /\.story\.tsx?$/);
+const req = require.context('../src/', true, /\.story\.tsx?$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
