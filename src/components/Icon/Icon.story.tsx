@@ -15,6 +15,7 @@ const calNewIcon = require('./assets/calNew.svg');
 const alphaAscIcon = require('./assets/alphaAsc.svg');
 const searchIcon = require('./assets/search.svg');
 const alphaDescIcon = require('./assets/alphaDesc.svg');
+const wordIcon = require('./assets/word.svg');
 
 
 storiesOf('Icon', module)
@@ -31,6 +32,7 @@ storiesOf('Icon', module)
   .add('alphaAsc', () => <Icon svgSrc={alphaAscIcon}></Icon>)
   .add('search', () => <Icon svgSrc={searchIcon}></Icon>)
   .add('alphaDesc', () => <Icon svgSrc={alphaDescIcon}></Icon>)
+  .add('word', () => <Icon svgSrc={wordIcon}></Icon>)
   .add('new with checked (clicked)', () => <Icon svgSrc={newIcon} checked={ true }></Icon>)
   .add('edit with checked (clicked)', () => <Icon svgSrc={editIcon} checked={ true }></Icon>)
   .add('sort with checked (clicked)', () => <Icon svgSrc={sortIcon} checked={ true }></Icon>)
@@ -44,4 +46,5 @@ storiesOf('Icon', module)
   .add('alphaAsc with checked (clicked)', () => <Icon svgSrc={alphaAscIcon} checked={ true }></Icon>)
   .add('search with checked (clicked)', () => <Icon svgSrc={searchIcon} checked={ true }></Icon>)
   .add('alphaDesc with checked (clicked)', () => <Icon svgSrc={alphaDescIcon} checked={ true }></Icon>)
+  .add('word with checked (clicked)', () => <Icon svgSrc={wordIcon} checked={ true }></Icon>)
 
