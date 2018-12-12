@@ -3,5 +3,6 @@ export default interface ThemeInterface {
   primaryColor: string;
   secondaryColor: string;
   thirdColor: string;
-  primaryFont: string;
+  primaryFontColor: string;
+  secondaryFontColor: string;
 }

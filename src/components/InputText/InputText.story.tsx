@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import InputText from './InputText';
+import DefInput from './DefInput';
+import WordInput from './WordInput';
 import ThemeDecorator from '../ThemeDecorator';
 
 storiesOf('InputText', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
-  .add("Primary", () => <InputText placeholder='enter your new word here...'></InputText>)
+  .add("WordInput (with Icon label)", () => <WordInput placeholder='enter your new word here...' labelName="word-input"></WordInput>)
+  .add("DefInput (without Icon label)", () => <DefInput placeholder='enter your new word here...' labelName="word-input"></DefInput>)
