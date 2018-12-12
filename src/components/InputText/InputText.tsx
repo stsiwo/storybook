@@ -40,5 +40,9 @@ const StyledInputText = styled(InputText)`
   width: 80%;
   align-items: center;
   justify-content: flex-start;
+
+  & label {
+    margin-left: 5px;
+  }
 `
 export default StyledInputText;
