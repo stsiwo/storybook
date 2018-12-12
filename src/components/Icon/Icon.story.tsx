@@ -2,24 +2,23 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Icon from './Icon';
 
-import newIcon from './assets/new.svg';
-import editIcon from './assets/edit.svg';
-import sortIcon from './assets/sort.svg';
-import deleteIcon from './assets/delete.svg';
-import selectAllIcon from './assets/selectAll.svg';
-import uploadIcon from './assets/upload.svg';
-import uploadImageIcon from './assets/uploadImage.svg';
-import searchImageIcon from './assets/searchImage.svg';
-import calOldIcon from './assets/calOld.svg';
-import calNewIcon from './assets/calNew.svg';
-import alphaAscIcon from './assets/alphaAsc.svg';
-import searchIcon from './assets/search.svg';
-import alphaDescIcon from './assets/alphaDesc.svg';
+const newIcon = require('./assets/new.svg');
+const editIcon = require('./assets/edit.svg');
+const sortIcon = require('./assets/sort.svg');
+const deleteIcon = require('./assets/delete.svg');
+const selectAllIcon = require('./assets/selectAll.svg');
+const uploadIcon = require('./assets/upload.svg');
+const uploadImageIcon = require('./assets/uploadImage.svg');
+const searchImageIcon = require('./assets/searchImage.svg');
+const calOldIcon = require('./assets/calOld.svg');
+const calNewIcon = require('./assets/calNew.svg');
+const alphaAscIcon = require('./assets/alphaAsc.svg');
+const searchIcon = require('./assets/search.svg');
+const alphaDescIcon = require('./assets/alphaDesc.svg');
 
-console.log(newIcon);
 
 storiesOf('Icon', module)
-  .add('new', () => <Icon svgSrc={newIcon} checked={ true }></Icon>)
+  .add('new', () => <Icon svgSrc={newIcon}></Icon>)
   .add('edit', () => <Icon svgSrc={editIcon}></Icon>)
   .add('sort', () => <Icon svgSrc={sortIcon}></Icon>)
   .add('delete', () => <Icon svgSrc={deleteIcon}></Icon>)

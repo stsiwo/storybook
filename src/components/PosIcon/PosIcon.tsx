@@ -14,7 +14,7 @@ const PosIcon: React.SFC<Props> = ( props ) => {
   );
 }
 
-const StyledPosIcon = styled(PosIcon)<{ checked: boolean }>`
+const StyledPosIcon = styled(PosIcon)<{ checked?: boolean }>`
   background-color: ${( props ) => props.theme.primaryColor };
   height: 30px;
   width: 30px;
