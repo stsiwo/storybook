@@ -16,6 +16,8 @@ import alphaAscIcon from './assets/alphaAsc.svg';
 import searchIcon from './assets/search.svg';
 import alphaDescIcon from './assets/alphaDesc.svg';
 
+console.log(newIcon);
+
 storiesOf('Icon', module)
   .add('new', () => <Icon svgSrc={newIcon} checked={ true }></Icon>)
   .add('edit', () => <Icon svgSrc={editIcon}></Icon>)
