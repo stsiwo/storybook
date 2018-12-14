@@ -4,6 +4,7 @@ import Text from './Text';
 import TextWIcon from './TextWIcon';
 import ThemeDecorator from '../ThemeDecorator';
 import Search from './Search';
+import CheckBox from './CheckBox';
 const wordIcon = require('./assets/word.svg');
 
 const tempfunc: (e: React.MouseEvent<HTMLElement>) => void = (e) => {};
@@ -19,3 +20,4 @@ storiesOf('form elements/text input (string label))', module)
 storiesOf('form elements', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
   .add("Search (without Icon label)", () => <Search placeholder='enter your new word here...' labelName="word-input" onClick={ tempfunc }></Search>)
+  .add("CheckBox", () => <CheckBox labelName="word-input" onChange={ tempfunc }>Sample Word</CheckBox>)
