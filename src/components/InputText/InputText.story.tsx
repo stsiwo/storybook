@@ -1,14 +1,21 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import DefInput from './DefInput';
-import WordInput from './WordInput';
+import Text from './Text';
+import TextWIcon from './TextWIcon';
 import ThemeDecorator from '../ThemeDecorator';
 import Search from './Search';
+const wordIcon = require('./assets/word.svg');
 
 const tempfunc: (e: React.MouseEvent<HTMLElement>) => void = (e) => {};
 
-storiesOf('InputText', module)
+storiesOf('form elements/text input (icon label))', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
-  .add("WordInput (with Icon label)", () => <WordInput placeholder='enter your new word here...' labelName="word-input"></WordInput>)
-  .add("DefInput (without Icon label)", () => <DefInput placeholder='enter your new word here...' labelName="word-input"></DefInput>)
+  .add("word name", () => <TextWIcon placeholder='enter your new word here...' labelName="word-input" svgSrc={ wordIcon }></TextWIcon>)
+
+storiesOf('form elements/text input (string label))', module)
+  .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
+  .add("definition", () => <Text placeholder='enter your new word here...' labelName="word-input">Def</Text>)
+
+storiesOf('form elements', module)
+  .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
   .add("Search (without Icon label)", () => <Search placeholder='enter your new word here...' labelName="word-input" onClick={ tempfunc }></Search>)

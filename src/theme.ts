@@ -7,6 +7,8 @@ export default interface ThemeInterface {
   primaryFontColor: string;
   secondaryFontColor: string;
 
+  primaryFontFamily: string;
+
   mobileS: string;
   mobileM: string;
   mobileL: string;

@@ -12,6 +12,8 @@ const formElement = css`
   align-items: center;
   justify-content: flex-start;
 
+  font-family: ${( props ) => props.theme.primaryFontFamily };
+
   & label {
     margin: 0 5px 0 10px;
     flex-basis: 30px;

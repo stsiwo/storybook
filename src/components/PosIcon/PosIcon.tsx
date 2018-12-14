@@ -32,6 +32,7 @@ const StyledPosIcon = styled(PosIcon)<{ checked?: boolean }>`
   }};
   text-align: center;
   color: #FFFFFF;
+  font-family: ${( props ) => props.theme.primaryFontFamily };
 `;
 
 

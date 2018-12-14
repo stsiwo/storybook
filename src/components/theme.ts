@@ -7,6 +7,8 @@ export const theme: ThemeInterface = {
   primaryFontColor:  '#000000',
   secondaryFontColor:  '#FFFFFF',
 
+  primaryFontFamily: "'Cabin', sans-seif",
+
   mobileS: '356px',
   mobileM: '400px',
   mobileL: '520px',

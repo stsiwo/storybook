@@ -33,13 +33,14 @@ class Button extends React.Component<Props, {}> {
 
 const StyledButton = styled(Button)`
   height: 30px;
-  width: 80px;
   border: none;
+  padding: 0 3%;
   color: ${( props ) => props.theme.primaryFontColor };
   font-weight: bold;
   border-radius: 15px;
-  font-size: 12px;
+  font-size: 14px;
   outline: none;
+  font-family: ${( props ) => props.theme.primaryFontFamily };
 
   ${ripple}
 `;

@@ -1,27 +1,28 @@
 import * as React from 'react';
 import styled from '../../styledComponents';
-import InputText from './InputText';
+import Input from './Input';
 import formElement from '../common/formElement';
 interface Props {
   className?: string;
   placeholder?: string;
   labelName: string;
+  children: string;
 }
 
-const DefInput: React.SFC<Props> = ( props ) => {
+const Text: React.SFC<Props> = ( props ) => {
   return (
     <div className={ props.className }>
       <label htmlFor={ props.labelName }>
-        Def
+        { props.children }
       </label>
-      <InputText placeholder={ props.placeholder } labelName={ props.labelName } />
+      <Input type="text" placeholder={ props.placeholder } name={ props.labelName } />
     </div>
   );
 }
 
-const StyledDefInput = styled(DefInput)`
+const StyledText = styled(Text)`
   ${ formElement }
 `
-export default StyledDefInput;
+export default StyledText;
 
 

@@ -37,6 +37,8 @@ const StyleControllerItem = styled(ControllerItem)`
   box-sizing: border-box;
   transition: opacity 0.5s;
   cursor: pointer;
+  font-size: 12px;
+  font-family: ${( props ) => props.theme.primaryFontFamily};
 
   & > h4 {
     margin: 0;
