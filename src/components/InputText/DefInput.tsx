@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from '../../styledComponents';
 import InputText from './InputText';
-
+import formElement from '../common/formElement';
 interface Props {
   className?: string;
   placeholder?: string;
@@ -20,18 +20,7 @@ const DefInput: React.SFC<Props> = ( props ) => {
 }
 
 const StyledDefInput = styled(DefInput)`
-  background-color: ${( props ) => props.theme.thirdColor };  
-  border-radius: 15px;
-  height: 30px;
-  display: flex;
-  width: 80%;
-  align-items: center;
-  justify-content: flex-start;
-
-  & label {
-    margin: 0 7px;
-    color: ${( props ) => props.theme.secondaryFontColor };
-  }
+  ${ formElement }
 `
 export default StyledDefInput;
 

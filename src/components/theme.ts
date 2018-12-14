@@ -5,5 +5,13 @@ export const theme: ThemeInterface = {
   secondaryColor: '#7CE383',
   thirdColor: '#5BEA17',
   primaryFontColor:  '#000000',
-  secondaryFontColor:  '#FFFFFF'
+  secondaryFontColor:  '#FFFFFF',
+
+  mobileS: '356px',
+  mobileM: '400px',
+  mobileL: '520px',
+  tablet: '768px',
+  laptop: '1024px',
+  laptopL: '1440px',
+  fourk: '2560px',
 }
