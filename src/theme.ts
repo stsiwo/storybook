@@ -18,4 +18,5 @@ export default interface ThemeInterface {
   fourk: string;
 
   headerHeight: string;
+  navBarWidth: string;
 }

@@ -18,4 +18,5 @@ export const theme: ThemeInterface = {
   fourk: '2560px',
 
   headerHeight: '50px',
+  navBarWidth: '100px',
 }

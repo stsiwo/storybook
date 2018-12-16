@@ -22,12 +22,12 @@ class NavBar extends React.Component<Props, {}> {
     return (
       <nav className={ this.props.className }>
         <a href="">
-          <Icon svgSrc={ settingIcon } />
+          <Icon svgSrc={ settingIcon } hidden={ !this.props.isOpen }/>
           <h4>Home</h4>
         </a>
         <Hl />
         <a href="">
-          <Icon svgSrc={ settingIcon } />
+          <Icon svgSrc={ settingIcon } hidden={ !this.props.isOpen }/>
           <h4>Word</h4>
         </a>
       </nav>
@@ -47,9 +47,9 @@ const StyledNavBar = styled(NavBar)`
   right: 0;
   ${( props ) => {
      if (props.isOpen) {
-       return 'transform: scaleX(1); transition: transform 0.5s;'; 
+       return 'width: ' + props.theme.navBarWidth +'; transition: width 0.5s;'; 
      } else {
-       return 'transform: scaleX(0); transition: transform 0.5s;'; 
+       return 'width: 0; transition: width 0.5s;'; 
      }       
   }}   
   & > a {
@@ -60,7 +60,10 @@ const StyledNavBar = styled(NavBar)`
     text-decoration: none;
     height: 50px;
     padding: 0 20px;
+  }
 
+  & > a > h4 {
+    visibility: ${( props ) => props.isOpen ? 'visible' : 'hidden' };
   }
 `;
 
