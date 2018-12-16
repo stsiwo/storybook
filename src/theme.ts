@@ -16,4 +16,6 @@ export default interface ThemeInterface {
   laptop: string;
   laptopL: string;
   fourk: string;
+
+  headerHeight: string;
 }

@@ -1,27 +1,38 @@
 import * as React from 'react';
 import styled from '../../styledComponents';
 import Icon from '../Icon/Icon';
+import NavBar from './NavBar';
 const settingIcon = require('./assets/setting.svg');
 
 interface Props {
   className?: string;
 }
 
-class Header extends React.Component<Props, {}> {
+interface State {
+   isNavBarOpen: boolean;
+}
+
+class Header extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+    this.state = {
+      isNavBarOpen: false,
+    }
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange(): void {
-    
+  handleClick(): void {
+    const currentStatus = this.state.isNavBarOpen;
+    this.setState({ isNavBarOpen: !currentStatus }); 
   }
 
   render() {
     return (
       <header className={ this.props.className }>
-        <div><Icon svgSrc={ settingIcon }></Icon></div>
+        <Icon svgSrc={ settingIcon }></Icon>
         <h2>Title</h2>
-        <div><Icon svgSrc={ settingIcon }></Icon></div>
+        <NavBar isOpen={ this.state.isNavBarOpen }/> 
+        <Icon svgSrc={ settingIcon } onClick={ this.handleClick }></Icon>
       </header>
     );
   }
@@ -34,7 +45,7 @@ const StyledHeader = styled(Header)`
   align-items: center;
   justify-content: space-between;
 
-  height: 50px;
+  height: ${( props ) => props.theme.headerHeight };
   width: 100%;
 
   position: fixed;

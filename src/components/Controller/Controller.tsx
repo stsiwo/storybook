@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from '../../styledComponents';
 import ControllerItem from '../Controller/ControllerItem';
+import { Vl } from '../common/Line';
 const newIcon = require('./assets/new.svg');
 const searchIcon = require('./assets/search.svg');
 const editIcon = require('./assets/edit.svg');
@@ -12,12 +13,6 @@ interface Props {
   className?: string;
 }
 
-const Vl = styled.div`
-  width: 1px;
-  background-color: black;
-  opacity: 0.1;
-  height: 80%;
-`;
 
 class Controller extends React.Component<Props, {}> {
   constructor(props: Props) {

@@ -16,4 +16,6 @@ export const theme: ThemeInterface = {
   laptop: '1024px',
   laptopL: '1440px',
   fourk: '2560px',
+
+  headerHeight: '50px',
 }

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styled from '../../styledComponents';
 
 /**
@@ -15,4 +16,33 @@ const Icon = styled("div")<{ svgSrc: string, unchecked?: boolean, hoverEffect?: 
   }
 `;
 
-export default Icon;
+interface Props {
+  className?: string;
+  unchecked?: boolean;
+  hoverEffect?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  svgSrc: string;
+}
+  
+
+class WrapperIcon extends React.Component<Props, {}> {
+  constructor(props: Props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e: React.MouseEvent<HTMLElement>): void {
+    this.props.onClick(e); 
+  }
+
+  render() {
+    return (
+      <div className={ this.props.className } onClick={ this.props.onClick }>
+        <Icon svgSrc={ this.props.svgSrc } unchecked={ this.props.unchecked } hoverEffect={ this.props.hoverEffect } />
+      </div>
+   );
+  }
+}
+
+
+export default WrapperIcon;
