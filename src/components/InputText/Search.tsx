@@ -26,7 +26,7 @@ class Search extends React.Component<Props, {}> {
   render() {
     return (
       <div className={ this.props.className }>
-        <Input type="search" name={ this.props.labelName } placeholder={ this.props.placeholder }></Input>
+        <Input type="search" id={ this.props.labelName } name={ this.props.labelName } placeholder={ this.props.placeholder } ></Input>
         <label htmlFor={ this.props.labelName }>
           <Icon svgSrc={ searchIcon } hoverEffect={ true } /> 
         </label>

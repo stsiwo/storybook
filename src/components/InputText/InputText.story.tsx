@@ -8,6 +8,7 @@ import CheckBox from './CheckBox';
 const wordIcon = require('./assets/word.svg');
 
 const tempfunc: (e: React.MouseEvent<HTMLElement>) => void = (e) => {};
+const tempChangeFunc: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {};
 
 storiesOf('form elements/text input (icon label))', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
@@ -20,4 +21,5 @@ storiesOf('form elements/text input (string label))', module)
 storiesOf('form elements', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
   .add("Search (without Icon label)", () => <Search placeholder='enter your new word here...' labelName="word-input" onClick={ tempfunc }></Search>)
-  .add("CheckBox", () => <CheckBox labelName="word-input" onChange={ tempfunc }>Sample Word</CheckBox>)
+  .add("CheckBox", () => <CheckBox labelName="word-input" onChange={ tempChangeFunc } checked={ true }>Sample Word</CheckBox>)
+  .add("unchecked CheckeBox", () => <CheckBox labelName="word-input" onChange={ tempChangeFunc } checked={ false }>Sample Word</CheckBox>)

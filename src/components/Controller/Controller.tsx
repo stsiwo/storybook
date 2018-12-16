@@ -50,6 +50,7 @@ const StyleController = styled(Controller)`
 
   width: ${ (props) => props.theme.mobileS };
   height: 50px;
+
 `;
 
 export default StyleController;

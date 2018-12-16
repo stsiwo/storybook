@@ -15,7 +15,7 @@ const Text: React.SFC<Props> = ( props ) => {
       <label htmlFor={ props.labelName }>
         { props.children }
       </label>
-      <Input type="text" placeholder={ props.placeholder } name={ props.labelName } />
+      <Input type="text" placeholder={ props.placeholder } id={ props.labelName }name={ props.labelName } />
     </div>
   );
 }

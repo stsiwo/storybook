@@ -1,5 +1,8 @@
 import styled from '../../styledComponents';
 
+/**
+ * need wrapper element like div>Icon for ease of style
+ **/
 const Icon = styled("div")<{ svgSrc: string, unchecked?: boolean, hoverEffect?: boolean }>`
   background-image: url(${ (props) => props.svgSrc });
   height: 30px;

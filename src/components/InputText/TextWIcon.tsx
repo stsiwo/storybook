@@ -17,7 +17,7 @@ const TextWIcon: React.SFC<Props> = ( props ) => {
       <label htmlFor={ props.labelName }>
         <Icon svgSrc={ props.svgSrc }/>
       </label>
-      <Input type="text" placeholder={ props.placeholder } name={ props.labelName } />
+      <Input type="text" placeholder={ props.placeholder } id={ props.labelName }name={ props.labelName } />
     </div>
   );
 }
