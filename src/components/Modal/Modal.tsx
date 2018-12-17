@@ -14,6 +14,8 @@ interface Props {
   children?: string;
   isOpen: boolean;
   closeButton: button;
+  confirmButton?: button;
+  resetButton?: button;
 }
 
 class Modal extends React.Component<Props, {}> {
@@ -38,6 +40,10 @@ class Modal extends React.Component<Props, {}> {
             <hr />
             <menu>
               <Button onClick={ this.props.closeButton.onClick }>{ this.props.closeButton.name }</Button>
+              {(this.props.confirmButton) && 
+              <Button onClick={ this.props.confirmButton.onClick }>{ this.props.confirmButton.name }</Button> }
+              {(this.props.resetButton) && 
+              <Button onClick={ this.props.resetButton.onClick }>{ this.props.resetButton.name }</Button> }
             </menu>
           </form>
         </div>
@@ -69,8 +75,14 @@ const StyledModal = styled(Modal)`
     border-radius: 15px;
     box-shadow: 2px 2px 2px ${( props ) => props.theme.primaryColor };
   }  
-    
 
+  & menu {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+    
 `;
 
 

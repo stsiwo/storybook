@@ -34,7 +34,9 @@ class Button extends React.Component<Props, {}> {
 const StyledButton = styled(Button)`
   height: 30px;
   border: none;
-  padding: 0 7%;
+  padding: 5px 20px;
+  box-sizing: content-box;
+  margin: 0 10px;
   color: ${( props ) => props.theme.primaryFontColor };
   font-weight: bold;
   border-radius: 15px;
