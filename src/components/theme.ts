@@ -19,4 +19,6 @@ export const theme: ThemeInterface = {
 
   headerHeight: '50px',
   navBarWidth: '100px',
+
+  primaryOverlayColor: 'rgba(89, 233, 22, 0.4)',
 }

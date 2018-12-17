@@ -5,7 +5,7 @@ import ripple from '../effects/ripple';
 interface Props {
   className?: string;
   children: string;
-  onClick(e: React.MouseEvent<HTMLElement>): void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 class Button extends React.Component<Props, {}> {
@@ -34,13 +34,15 @@ class Button extends React.Component<Props, {}> {
 const StyledButton = styled(Button)`
   height: 30px;
   border: none;
-  padding: 0 3%;
+  padding: 0 7%;
   color: ${( props ) => props.theme.primaryFontColor };
   font-weight: bold;
   border-radius: 15px;
-  font-size: 14px;
+  font-size: 18px;
   outline: none;
   font-family: ${( props ) => props.theme.primaryFontFamily };
+  cursor: pointer;
+  box-shadow: 1px 1px 2px ${( props ) => props.theme.primaryColor };
 
   ${ripple}
 `;

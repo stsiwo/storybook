@@ -19,4 +19,6 @@ export default interface ThemeInterface {
 
   headerHeight: string;
   navBarWidth: string;
+
+  primaryOverlayColor: string;
 }
