@@ -47,7 +47,7 @@ class SortModalTest extends React.Component<Props, State> {
       name: "Confirm",
       onClick: this.handleConfirmClick,
     }
-    const reset = {
+    const resetBtn = {
       name: "Reset",
       onClick: this.handleResetClick,
     }

@@ -94,9 +94,9 @@ const StyledFilter = styled(Filter)`
   font-family: ${( props ) => props.theme.primaryFontFamily };
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 5px 0;
 
-  margin-right: 10px;
 
   & > h3 {
     margin-right: 10px;

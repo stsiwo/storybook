@@ -40,7 +40,6 @@ const StyledButton = styled(Button)`
   color: ${( props ) => props.theme.primaryFontColor };
   font-weight: bold;
   border-radius: 15px;
-  font-size: 18px;
   outline: none;
   font-family: ${( props ) => props.theme.primaryFontFamily };
   cursor: pointer;

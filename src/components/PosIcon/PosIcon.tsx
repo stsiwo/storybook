@@ -23,13 +23,6 @@ const StyledPosIcon = styled(PosIcon)<{ checked?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: ${( props ) => {
-    if ( props.children.length === 2 ) return '23px';
-    if ( props.children.length === 4 ) return '17px';
-    if ( props.children.length === 5 ) return '13px';
-    if ( props.children.length === 7 ) return '12px';
-    else return '10px'; 
-  }};
   text-align: center;
   color: #FFFFFF;
   font-family: ${( props ) => props.theme.primaryFontFamily };

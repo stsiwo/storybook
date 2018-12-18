@@ -106,9 +106,9 @@ class Sort extends React.Component<Props, State> {
 const StyledSort = styled(Sort)`
    display: flex;
    align-items: center;
-   justify-content: center;
+   justify-content: flex-start;
    font-family: ${( props ) => props.theme.primaryFontFamily };
-   font-size: 12px;
+   margin: 5px 0;
    
    & > h3 {
     margin-right: 10px;
