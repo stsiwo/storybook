@@ -13,6 +13,7 @@ import {
 import SelectModalTest from './SelectModalTest';
 import ConfirmModalTest from './ConfirmModalTest';
 import SortFilterModalTest from './SortFilterModalTest';
+import Sort from './Sort';
 
 interface button {
   name: string;
@@ -40,3 +41,8 @@ storiesOf('Modal', module)
   .add("select item warning Modal Test", () => <SelectModalTest title={ selectItemTitle } detail={ selectItemDetail }></SelectModalTest>)
   .add("confirm deletion Modal Test", () => <ConfirmModalTest title={ confirmDeleteTitle } detail={ confirmDeleteDetail }></ConfirmModalTest>)
   .add("sort filter Modal Test", () => <SortFilterModalTest title={ sortFilterTitle } detail={ sortFilterDetail }></SortFilterModalTest>)
+
+storiesOf('Modal/Sort Filter Conent', module)
+  .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
+  .add("Sort radio input", () => <Sort ></Sort>)
+

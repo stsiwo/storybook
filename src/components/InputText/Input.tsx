@@ -8,6 +8,8 @@ interface Props {
   name?: string;
   placeholder?: string;
   type?: string;
+  checked?: boolean;
+  value?: any;
 }
 
 class Input extends React.Component<Props, {}> {
@@ -29,6 +31,7 @@ class Input extends React.Component<Props, {}> {
         name={ this.props.name }
         placeholder={ this.props.placeholder }
         onChange={ this.handleChange }
+        checked={ this.props.checked }
       />
     );
   }
