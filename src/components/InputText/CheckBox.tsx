@@ -8,6 +8,7 @@ interface Props {
   children?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   checked: boolean;
+  value?: any;
 }
 
 class CheckBox extends React.Component<Props, {}> {
@@ -24,7 +25,7 @@ class CheckBox extends React.Component<Props, {}> {
   render() {
     return (
       <div className={ this.props.className }>
-        <Input type="checkbox" name={ this.props.labelName } id={ this.props.labelName } onChange={ this.props.onChange }></Input>
+        <Input type="checkbox" name={ this.props.labelName } id={ this.props.labelName } onChange={ this.props.onChange } value={ this.props.value } checked={ this.props.checked }></Input>
         <label htmlFor={ this.props.labelName }>
           { this.props.children }
         </label>
@@ -35,20 +36,19 @@ class CheckBox extends React.Component<Props, {}> {
 }
 
 const StyledCheckBox = styled(CheckBox)`
-  background-color: ${( props ) => (props.checked) ? props.theme.thirdColor : 'transparent' };
+  background-color: ${( props ) => (props.checked) ? props.theme.thirdColor : props.theme.thirdColorOpacity };
 
   border-radius: 20px;
-  border: 3px solid ${( props ) => props.theme.thirdColor };
+  min-width: 40px;
   height: 40px;
 
   display: inline-block;
   box-sizing: border-box;
+  margin: 5px 5px;
+  text-align: center;
 
   & > input {
-    width: 0;
-    height: 0;
-    margin: 0;
-    padding: 0;
+    display: none;
   }  
 
   & > label {
@@ -56,7 +56,7 @@ const StyledCheckBox = styled(CheckBox)`
     display: inline-block;
     height: 100%;
     line-height: 40px;
-    padding: 0 15px;
+    padding: 0 10px;
     cursor: pointer;
   }
 `;

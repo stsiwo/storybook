@@ -14,6 +14,7 @@ import SelectModalTest from './SelectModalTest';
 import ConfirmModalTest from './ConfirmModalTest';
 import SortFilterModalTest from './SortFilterModalTest';
 import Sort from './Sort';
+import Filter from './Filter';
 
 interface button {
   name: string;
@@ -45,4 +46,5 @@ storiesOf('Modal', module)
 storiesOf('Modal/Sort Filter Conent', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
   .add("Sort radio input", () => <Sort ></Sort>)
+  .add("Filter checkbox input", () => <Filter ></Filter>)
 
