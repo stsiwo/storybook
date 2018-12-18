@@ -15,6 +15,7 @@ import ConfirmModalTest from './ConfirmModalTest';
 import SortFilterModalTest from './SortFilterModalTest';
 import Sort from './Sort';
 import Filter from './Filter';
+import SortFilter from './SortFilterContent';
 
 interface button {
   name: string;
@@ -33,15 +34,17 @@ const resetBtn: button = {
   name: "Reset",
   onClick: (e) => {}, 
 }
+const SortEvent: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {};
+const FilterEvent: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {};
  
 storiesOf('Modal', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
   .add("plz select item Modal", () => <Modal title={ selectItemTitle } detail={ selectItemDetail } closeButton={ closeBtn } isOpen={ true }></Modal>)
   .add("plz confirm deletion Modal", () => <Modal title={ confirmDeleteTitle } detail={ confirmDeleteDetail } closeButton={ closeBtn } confirmButton={ confirmBtn } isOpen={ true }></Modal>)
-  .add("plz confirm deletion Modal", () => <Modal title={ sortFilterTitle } detail={ sortFilterDetail } closeButton={ closeBtn } confirmButton={ confirmBtn } resetButton={ resetBtn } isOpen={ true }></Modal>)
+  .add("plz sort Modal", () => <Modal title={ sortFilterTitle } detail={ sortFilterDetail } closeButton={ closeBtn } confirmButton={ confirmBtn } resetButton={ resetBtn } isOpen={ true }><SortFilter onSortChange={ SortEvent } onFilterChange={ FilterEvent }/></Modal>)
   .add("select item warning Modal Test", () => <SelectModalTest title={ selectItemTitle } detail={ selectItemDetail }></SelectModalTest>)
   .add("confirm deletion Modal Test", () => <ConfirmModalTest title={ confirmDeleteTitle } detail={ confirmDeleteDetail }></ConfirmModalTest>)
-  .add("sort filter Modal Test", () => <SortFilterModalTest title={ sortFilterTitle } detail={ sortFilterDetail }></SortFilterModalTest>)
+  .add("sort filter Modal Test", () => <SortFilterModalTest title={ sortFilterTitle } detail={ sortFilterDetail } onSortChange={ SortEvent } onFilterChange={ FilterEvent }></SortFilterModalTest>)
 
 storiesOf('Modal/Sort Filter Conent', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 

@@ -1,21 +1,18 @@
 import * as React from 'react';
 import styled from '../../styledComponents';
 import Modal from './Modal';
-import SortFilter from './SortFilterContent';
 
 interface Props {
   className?: string;
   title: string;
   detail: string;
-  onSortChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; 
-  onFilterChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; 
 }
 
 interface State {
   isSortModalOpen: boolean;
 }
 
-class SortFilterModalTest extends React.Component<Props, State> {
+class SortModalTest extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -50,26 +47,24 @@ class SortFilterModalTest extends React.Component<Props, State> {
       name: "Confirm",
       onClick: this.handleConfirmClick,
     }
-    const resetBtn = {
+    const reset = {
       name: "Reset",
       onClick: this.handleResetClick,
     }
     return (
       <div>
-        <button onClick={this.handleToggleClick}>open sort filter warning modal</button>
-        <Modal title={ this.props.title } detail={ this.props.detail } closeButton={ selectCloseBtn } confirmButton={ confirmBtn } resetButton={ resetBtn } isOpen={ this.state.isSortModalOpen }>
-        <SortFilter onSortChange={ this.props.onSortChange } onFilterChange={ this.props.onFilterChange }/>
-      </Modal>
+        <button onClick={this.handleToggleClick}>open reset warning modal</button>
+        <Modal title={ this.props.title } detail={ this.props.detail } closeButton={ selectCloseBtn } confirmButton={ confirmBtn } resetButton={ resetBtn } isOpen={ this.state.isSortModalOpen }></Modal>
       </div>
     );
   }
 }
 
-const StyledSortFilterModalTest = styled(SortFilterModalTest)`
+const StyledSortModalTest = styled(SortModalTest)`
 `;
 
 
-export default StyledSortFilterModalTest;
+export default StyledSortModalTest;
 
 
 

@@ -11,7 +11,7 @@ interface Props {
   className?: string;
   title: string;
   detail: string;
-  children?: string;
+  children?: React.ReactNode;
   isOpen: boolean;
   closeButton: button;
   confirmButton?: button;
