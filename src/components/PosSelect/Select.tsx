@@ -1,42 +1,46 @@
 import * as React from 'react'; 
 import styled from '../../styledComponents'; 
 import Option from './Option';
-
-interface Item {
-  value: string;
-}
+import { posItem } from './posItems';
+import formElement from '../common/formElement';
 
 interface Props {
   className?: string;
-  items: Item[];
-  selectedItem: Item;
+  items: posItem[];
+  selectedItem: posItem;
   labelName: string;
-  handleChange: () => void; // temporary. need to swap later
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; 
 }
 
+interface State {
+  selectedItem: string;
+}
 
-class Select extends React.Component<Props, {}> {
+class Select extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+    this.state = {
+        selectedItem: this.props.selectedItem.value,
+    }
     this.renderOptions = this.renderOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   
   renderOptions() {
     const { items } = this.props;
-    return ( items.map(( item ) => {
-      return <Option key={ item.value } value={item.value}>{ item.value }</Option> 
+    return ( items.map(( posItem ) => {
+      return <Option key={ posItem.value } value={posItem.value}>{ posItem.pos }</Option> 
     }));
   }
 
-  handleChange() {
-    this.props.handleChange();
+  handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    this.setState({ selectedItem: e.target.value }); 
+    this.props.onChange(e);
   }
 
   render() {
-    const { labelName, selectedItem } = this.props;
     return (
-      <select value={selectedItem.value} name={labelName} className={ this.props.className } onChange={this.handleChange}>
+      <select value={this.state.selectedItem} name={this.props.labelName} className={ this.props.className } onChange={this.handleChange}>
         { this.renderOptions() } 
       </select>
     );
@@ -49,5 +53,29 @@ const StyledSelect = styled(Select)`
   outline: none;
 `;
 
-export default StyledSelect;
+interface WrapperProps {
+  className?: string;
+  items: posItem[];
+  selectedItem: posItem;
+  labelName: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; 
+  children: string;
+}
+
+const WrapperSelect: React.SFC<WrapperProps> = (props) => {
+  return (
+    <div className={ props.className }>
+      <label htmlFor={ props.labelName }>
+        { props.children }
+      </label>
+      <StyledSelect items={ props.items } selectedItem={ props.selectedItem } labelName={ props.labelName } onChange={props.onChange}></StyledSelect>  
+    </div>
+  );
+}
+
+const StyledWrapperSelect = styled(WrapperSelect)`
+  ${ formElement }
+`;
+
+export default StyledWrapperSelect;
 

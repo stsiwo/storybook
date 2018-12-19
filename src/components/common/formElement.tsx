@@ -6,9 +6,7 @@ const formElement = css`
   background-color: ${( props ) => props.theme.thirdColor };  
   border-radius: 15px;
   height: 30px;
-  width: 80%;
-
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: flex-start;
 
@@ -20,10 +18,14 @@ const formElement = css`
     // if label include text
     color: ${( props ) => props.theme.secondaryFontColor};
   }
-
+  // input element except select
   & input {
     margin: 0 10px 0 0;
-    flex-grow: 8;
+    min-width: 250px;
+  }
+
+  & select {
+    margin: 0 10px 0 0;
   }
     
 `

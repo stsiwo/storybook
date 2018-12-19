@@ -16,7 +16,7 @@ storiesOf('form elements/text input (icon label))', module)
 
 storiesOf('form elements/text input (string label))', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
-  .add("definition", () => <Text placeholder='enter your new word here...' labelName="word-input">Def</Text>)
+  .add("definition", () => <Text placeholder='enter your new word here...' labelName="word-input" onChange={ tempChangeFunc } value="">Def</Text>)
 
 storiesOf('form elements', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 

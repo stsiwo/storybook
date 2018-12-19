@@ -3,26 +3,20 @@ import styled from '../../styledComponents';
 import Icon from '../Icon/Icon';
 const posIcon = require('./assets/pos.svg');
 import Select from './Select';
-
-interface Item {
-  value: string;
-}
+import { posItems } from './posItems';
 
 interface Props {
   className?: string;
-  items: Item[];
-  selectedItem: Item;
-  labelName: string;
-  handleChange: () => void; // temporary. need to swap later
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; 
 }
 
 const PosSelect: React.SFC<Props> = (props) => {
   return (
     <div className={ props.className }>
-      <label htmlFor={ props.labelName } >
+      <label htmlFor="posItems" >
         <Icon svgSrc={ posIcon } />
       </label>
-      <Select items={ props.items } selectedItem={ props.selectedItem } labelName={ props.labelName } handleChange={props.handleChange}></Select>  
+      <Select items={ posItems } selectedItem={ posItems[0] } labelName="posItems" onChange={props.onChange}>Pos</Select>  
     </div>
   );
 }
