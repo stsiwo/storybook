@@ -46,6 +46,10 @@ class DefNode extends React.Component<Props, State> {
           </div>
           <div>
             <Icon svgSrc={ searchImageIcon } width="20px" height="20px"></Icon>
+            <label>
+              Upload file:
+              <input type="file" accept="image/*" />
+            </label> 
             <Icon svgSrc={ uploadImageIcon } width="20px" height="20px"></Icon>
             <Icon svgSrc={ deleteIcon } width="20px" height="20px"></Icon>
           </div>
