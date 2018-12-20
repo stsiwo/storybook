@@ -10,24 +10,38 @@ interface ImageIF {
 
 interface Props {
   className?: string;
-  items: ImageIF[]; 
-  handleSearchBtnClick: (e: React.MouseEvent<HTMLElement>) => void;
+  //handleSearchBtnClick: (e: React.MouseEvent<HTMLElement>) => void;
+  initialSearchInput: string;
 }
 
-class SearchModalContent extends React.Component<Props, {} > {
+interface State {
+  items: ImageIF[]; 
+  searchInput: string;
+}
+
+
+class SearchModalContent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    //this.handleSearchBtnClick = this.handleSearchBtnClick.bind(this);
+    this.state = {
+      items: [], 
+      searchInput: this.props.initialSearchInput,
+    }
+    this.handleSearchBtnClick = this.handleSearchBtnClick.bind(this);
   }
 
-  //handleSearchBtnClick(e: React.MouseEvent<HTMLElement>) {
-  //}
+  handleSearchBtnClick(e: React.MouseEvent<HTMLElement>) {
+    // fetch image 
+    // change state to items
+    // temporary just console.log
+    console.log('search the images');
+  }
 
   render() {
     return (
       <div className={ this.props.className }>
-        <Search placeholder="search images for your definition here..." onClick={ this.props.handleSearchBtnClick } />
-        <SearchResults items={ this.props.items } />
+        <Search placeholder="search images for your definition here..." onClick={ this.handleSearchBtnClick } initialValue={ this.props.initialSearchInput }/>
+        <SearchResults items={ this.state.items } />
       </div>
     );
   }

@@ -4,6 +4,7 @@ import ThemeDecorator from '../ThemeDecorator';
 import DefNode from './DefNode';
 import DefTree from './DefTree';
 import { posItem, posItems } from '../PosSelect/posItems';
+import WordForm from './WordForm';
 
 const defaultItem: posItem = posItems[0]; 
 
@@ -13,8 +14,9 @@ const onTextChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {}
 
 storiesOf('Form/Word', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
-  .add("Def Node Component", () => <DefNode initialTextValue="" onSelectChange={ onSelectChange } onTextChange={ onTextChange } selectedItem={ defaultItem } isOpen={ true }></DefNode>)
-  .add("Def Tree Component", () => <DefTree initialTextValue="" onSelectChange={ onSelectChange } onTextChange={ onTextChange } selectedItem={ defaultItem }></DefTree>)
+  .add("Def Node Component", () => <DefNode initialTextValue="" onSelectChange={ onSelectChange } onTextChange={ onTextChange } selectedItem={ defaultItem } isOpen={ true } initialSearchInput="initial Search Input" ></DefNode>)
+  .add("Def Tree Component", () => <DefTree initialTextValue="" onSelectChange={ onSelectChange } onTextChange={ onTextChange } selectedItem={ defaultItem } initialSearchInput="initial Search Input" ></DefTree>)
+  .add("Word", () => <WordForm />); 
 
 
 

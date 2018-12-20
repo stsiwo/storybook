@@ -5,6 +5,7 @@ interface Props {
   className?: string;
   isOpen: boolean;
   children?: React.ReactNode;
+  handleSearchImageToggleClick: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 class BottomModal extends React.Component<Props, {}> {
@@ -19,7 +20,7 @@ class BottomModal extends React.Component<Props, {}> {
 
   render() {
     return (
-      <div className={ this.props.className }>
+      <div className={ this.props.className } onClick={ this.props.handleSearchImageToggleClick }>
         <div onClick={ this.handleClick }>
           <form method="dialog">
             { this.props.children }

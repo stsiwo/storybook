@@ -11,6 +11,7 @@ interface Props {
   labelName?: string;
   placeholder?: string;
   onClick(e: React.MouseEvent<HTMLElement>): void;
+  initialValue: string;
 }
 
 class Search extends React.Component<Props, {}> {
@@ -26,7 +27,7 @@ class Search extends React.Component<Props, {}> {
   render() {
     return (
       <div className={ this.props.className }>
-        <Input type="search" id={ this.props.labelName } name={ this.props.labelName } placeholder={ this.props.placeholder } ></Input>
+        <Input type="search" id={ this.props.labelName } name={ this.props.labelName } placeholder={ this.props.placeholder } value={ this.props.initialValue }></Input>
         <label htmlFor={ this.props.labelName }>
           <Icon svgSrc={ searchIcon } hoverEffect={ true } /> 
         </label>

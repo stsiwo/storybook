@@ -103,7 +103,7 @@ const tempImages: ImageIF[] = [
 
 const SortEvent: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {};
 const FilterEvent: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {};
-const SearchEvent: (e: React.MouseEvent<HTMLElement>) => void = (e) => {};
+const SearchClickEvent: (e: React.MouseEvent<HTMLElement>) => void = (e) => {};
  
 storiesOf('Modal/Modal', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
@@ -121,7 +121,7 @@ storiesOf('Modal/Sort Filter Conent', module)
 
 storiesOf('Modal', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
-  .add("BottomModal", () => <BottomModal isOpen={ true }><SearchModalContent items={ tempImages } handleSearchBtnClick={ SearchEvent }/></BottomModal>); 
+  .add("BottomModal", () => <BottomModal isOpen={ true } handleSearchImageToggleClick={ SearchClickEvent }><SearchModalContent initialSearchInput="initial search input" /></BottomModal>); 
 
 storiesOf('Modal/SearchModal', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 

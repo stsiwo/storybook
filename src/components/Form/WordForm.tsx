@@ -1,24 +1,65 @@
 import * as React from 'react';
 import styled from '../../styledComponents';
+import TextWIcon from '../InputText/TextWIcon';
+import DefTree from './DefTree';
+import { posItem } from '../PosSelect/posItems';
+
+const wordIcon = require('./assets/word.svg');
+
+interface IWord {
+  name: string;
+  defs: IDef[]; 
+} 
+
+interface ImageIF {
+  name: string;
+  src: string;
+}
+
+interface IDef {
+  pos: posItem[];
+  def: string;
+  image: ImageIF;
+}
+
 
 interface Props {
   className?: string;
+  word: IWord;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-class WordForm extends React.Component<Props, {}> {
+interface State {
+  name: string;
+  defs: IDef[];
+}
+
+class WordForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+    this.state = {
+      name: this.props.word.name,
+      defs: this.props.word.defs,
+    }
     this.handleClick = this.handleClick.bind(this);
+    this.handleWordNameChange = this.handleWordNameChange.bind(this);
   }
 
   handleClick(e: React.MouseEvent<HTMLElement>) {
     this.props.onClick(e);
   }
 
+  handleWordNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({ name: e.target.value }); 
+  }
+
   render() {
     return (
-      form[className={ this.props.className }]>Text+p+div>Icon+h4+Icon
+      <form className={ this.props.className }>
+        <TextWIcon placeholder="enter a new word here..." svgSrc={ wordIcon } labelName="word-text" onChange={ this.handleWordNameChange } value={ this.state.name }></TextWIcon>
+        <p>let’s define as many definitions of the word as you want :)</p>
+        <DefTree ></DefTree>
+      </form>
     );
   }
 }

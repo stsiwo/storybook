@@ -14,6 +14,7 @@ interface Props {
   initialTextValue: string;
   selectedItem: posItem;
   isOpen: boolean;
+  initialSearchInput: string;
 }
 
 interface State {
@@ -46,7 +47,7 @@ class DefNode extends React.Component<Props, State> {
             <Icon svgSrc={ deleteIcon } width="20px" height="20px"></Icon>
           </div>
         </li>
-        <DefContent onSelectChange={ this.props.onSelectChange } onTextChange={ this.props.onTextChange } selectedItem={ this.props.selectedItem } initialTextValue={ this.props.initialTextValue } isOpen={this.state.isDefContentOpen }/>
+        <DefContent onSelectChange={ this.props.onSelectChange } onTextChange={ this.props.onTextChange } selectedItem={ this.props.selectedItem } initialTextValue={ this.props.initialTextValue } isOpen={this.state.isDefContentOpen } initialSearchInput={ this.props.initialSearchInput }/>
       </ul>
     );
   }

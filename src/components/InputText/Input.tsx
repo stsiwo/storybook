@@ -19,7 +19,8 @@ class Input extends React.Component<Props, {}> {
   }
 
   handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    this.props.onChange(e);
+    if (this.props.onChange)
+      this.props.onChange(e);
   }
 
   render() {
@@ -32,6 +33,7 @@ class Input extends React.Component<Props, {}> {
         placeholder={ this.props.placeholder }
         onChange={ this.handleChange }
         checked={ this.props.checked }
+        value={ this.props.value }
       />
     );
   }

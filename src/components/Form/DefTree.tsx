@@ -11,8 +11,9 @@ interface Props {
   className?: string;
   onSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   onTextChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  initialTextValue: string;
-  selectedItem: posItem;
+  initialTextValue: string; // for def text
+  selectedItem: posItem; // for pos selected item
+  initialSearchInput: string; // word name for initial search input
 }
 
 interface State {
@@ -45,9 +46,7 @@ class DefTree extends React.Component<Props, State> {
             <Icon svgSrc={ newIcon } width="20px" height="20px"></Icon>
           </div>
         </li>
-        <DefNode onSelectChange={ this.props.onSelectChange } onTextChange={ this.props.onTextChange } selectedItem={ this.props.selectedItem } initialTextValue={ this.props.initialTextValue } isOpen={ this.state.isDefNodeOpen }></DefNode>
-        <DefNode onSelectChange={ this.props.onSelectChange } onTextChange={ this.props.onTextChange } selectedItem={ this.props.selectedItem } initialTextValue={ this.props.initialTextValue } isOpen={ this.state.isDefNodeOpen }></DefNode>
-        <DefNode onSelectChange={ this.props.onSelectChange } onTextChange={ this.props.onTextChange } selectedItem={ this.props.selectedItem } initialTextValue={ this.props.initialTextValue } isOpen={ this.state.isDefNodeOpen }></DefNode>
+        <DefNode onSelectChange={ this.props.onSelectChange } onTextChange={ this.props.onTextChange } selectedItem={ this.props.selectedItem } initialTextValue={ this.props.initialTextValue } isOpen={ this.state.isDefNodeOpen } initialSearchInput={ this.props.initialSearchInput }></DefNode>
       </ul>
     );
   }
