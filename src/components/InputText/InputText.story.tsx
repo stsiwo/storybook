@@ -28,5 +28,5 @@ storiesOf('form elements', module)
 
 storiesOf('form elements', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
-  .add("File", () => <File labelName="file" handleSearchImageToggleClick={ tempClickFunc }></File>)
+  .add("File", () => <File labelName="file" handleSearchImageToggleClick={ tempClickFunc } file="myfile"></File>)
 

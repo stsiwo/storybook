@@ -7,20 +7,20 @@ import formElement from '../common/formElement';
 interface Props {
   className?: string;
   items: posItem[];
-  selectedItem: posItem;
+  pos: posItem;
   labelName: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; 
 }
 
 interface State {
-  selectedItem: string;
+  pos: string;
 }
 
 class Select extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-        selectedItem: this.props.selectedItem.value,
+        pos: this.props.pos.value,
     }
     this.renderOptions = this.renderOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -34,13 +34,13 @@ class Select extends React.Component<Props, State> {
   }
 
   handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    this.setState({ selectedItem: e.target.value }); 
+    this.setState({ pos: e.target.value }); 
     this.props.onChange(e);
   }
 
   render() {
     return (
-      <select value={this.state.selectedItem} name={this.props.labelName} className={ this.props.className } onChange={this.handleChange}>
+      <select value={this.state.pos} name={this.props.labelName} className={ this.props.className } onChange={this.handleChange}>
         { this.renderOptions() } 
       </select>
     );
@@ -56,7 +56,7 @@ const StyledSelect = styled(Select)`
 interface WrapperProps {
   className?: string;
   items: posItem[];
-  selectedItem: posItem;
+  pos: posItem;
   labelName: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; 
   children: string;
@@ -68,7 +68,7 @@ const WrapperSelect: React.SFC<WrapperProps> = (props) => {
       <label htmlFor={ props.labelName }>
         { props.children }
       </label>
-      <StyledSelect items={ props.items } selectedItem={ props.selectedItem } labelName={ props.labelName } onChange={props.onChange}></StyledSelect>  
+      <StyledSelect items={ props.items } pos={ props.pos } labelName={ props.labelName } onChange={props.onChange}></StyledSelect>  
     </div>
   );
 }

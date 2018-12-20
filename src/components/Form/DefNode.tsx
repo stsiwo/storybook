@@ -2,23 +2,30 @@ import * as React from 'react';
 import styled from '../../styledComponents';
 import Icon from '../Icon/Icon';
 import DefContent from './DefContent';
-import { posItem } from '../PosSelect/posItems';
+import { posItem, posItems } from '../PosSelect/posItems';
 
 const arrowIcon = require('./assets/rightArrow.svg');
 const deleteIcon = require('./assets/delete.svg');
 
+//interface ImageIF {
+  //name: string;
+  //src: string;
+//}
+
 interface Props {
   className?: string;
-  onSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  onTextChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  initialTextValue: string;
-  selectedItem: posItem;
+  def: string;
+  pos: posItem;
+  image: string;
   isOpen: boolean;
   initialSearchInput: string;
 }
 
 interface State {
   isDefContentOpen: boolean;
+  pos: posItem;
+  def: string;
+  image: string; 
 }
 
 class DefNode extends React.Component<Props, State> {
@@ -26,13 +33,27 @@ class DefNode extends React.Component<Props, State> {
     super(props);
     this.state = {
       isDefContentOpen: true,
+      pos: this.props.pos,
+      def: this.props.def,
+      image: this.props.image,
     }
     this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.handlePosSelectChange = this.handlePosSelectChange.bind(this);
+    this.handleDefTextChange = this.handleDefTextChange.bind(this);
   }
 
   handleToggleClick(e: React.MouseEvent<HTMLElement>) {
     const currentToggleStatus = this.state.isDefContentOpen;
     this.setState({ isDefContentOpen : !currentToggleStatus });  
+  }
+
+  handlePosSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const targetPosItem = posItems.find(( pos ) => pos.value === e.target.value);
+    this.setState({ pos: targetPosItem }); 
+  }
+
+  handleDefTextChange(e: React.ChangeEvent<HTMLInputElement>) {
+      this.setState({ def: e.target.value });
   }
 
   render() {
@@ -47,7 +68,7 @@ class DefNode extends React.Component<Props, State> {
             <Icon svgSrc={ deleteIcon } width="20px" height="20px"></Icon>
           </div>
         </li>
-        <DefContent onSelectChange={ this.props.onSelectChange } onTextChange={ this.props.onTextChange } selectedItem={ this.props.selectedItem } initialTextValue={ this.props.initialTextValue } isOpen={this.state.isDefContentOpen } initialSearchInput={ this.props.initialSearchInput }/>
+        <DefContent onSelectChange={ this.handlePosSelectChange } onTextChange={ this.handleDefTextChange } pos={ this.props.pos } def={ this.props.def } image={ this.props.image } isOpen={this.state.isDefContentOpen } initialSearchInput={ this.props.initialSearchInput }/>
       </ul>
     );
   }

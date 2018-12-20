@@ -16,7 +16,7 @@ const PosSelect: React.SFC<Props> = (props) => {
       <label htmlFor="posItems" >
         <Icon svgSrc={ posIcon } />
       </label>
-      <Select items={ posItems } selectedItem={ posItems[0] } labelName="posItems" onChange={props.onChange}>Pos</Select>  
+      <Select items={ posItems } pos={ posItems[0] } labelName="posItems" onChange={props.onChange}>Pos</Select>  
     </div>
   );
 }

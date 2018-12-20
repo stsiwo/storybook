@@ -10,7 +10,7 @@ interface Props {
   labelName: string;
   handleSearchImageToggleClick: (e: React.MouseEvent<HTMLElement>) => void;
   // url to image server
-  fileUrl?: string;
+  file: string;
 }
 
 interface State {
@@ -25,7 +25,7 @@ class File extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      currentImage: this.props.fileUrl,
+      currentImage: this.props.file,
     }
     this.handleChange = this.handleChange.bind(this);
     this.releaseObjectURL = this.releaseObjectURL.bind(this);
@@ -34,7 +34,8 @@ class File extends React.Component<Props, State> {
   handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files[0];
 
-    console.log(URL);
+    console.log(typeof selectedFile);
+
     // display selected image to preview div
     const content = URL.createObjectURL(selectedFile);
     this.setState({ currentImage: content });

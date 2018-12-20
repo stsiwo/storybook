@@ -24,6 +24,7 @@ const formElement = css`
     min-width: 250px;
   }
 
+  // input element for select
   & select {
     margin: 0 10px 0 0;
   }

@@ -7,17 +7,21 @@ import { posItem } from '../PosSelect/posItems';
 const arrowIcon = require('./assets/rightArrow.svg');
 const newIcon = require('./assets/new.svg');
 
+interface IDef {
+  pos: posItem;
+  def: string;
+  image: string;
+}
+
 interface Props {
   className?: string;
-  onSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  onTextChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  initialTextValue: string; // for def text
-  selectedItem: posItem; // for pos selected item
   initialSearchInput: string; // word name for initial search input
+  defs: IDef[]; 
 }
 
 interface State {
   isDefNodeOpen: boolean;
+  defs: IDef[];
 }
 
 class DefTree extends React.Component<Props, State> {
@@ -25,6 +29,7 @@ class DefTree extends React.Component<Props, State> {
     super(props);
     this.state = {
       isDefNodeOpen: true,
+      defs: this.props.defs,
     }
     this.handleToggleClick = this.handleToggleClick.bind(this);
   }
@@ -33,6 +38,13 @@ class DefTree extends React.Component<Props, State> {
     const currentToggleStatus = this.state.isDefNodeOpen;
     this.setState({ isDefNodeOpen : !currentToggleStatus });  
   }
+
+  renderDefNodes() {
+    return this.state.defs.map(( eachDef ) => ( 
+      <DefNode pos={ eachDef.pos } def={ eachDef.def} image={ eachDef.image } isOpen={ this.state.isDefNodeOpen } initialSearchInput={ this.props.initialSearchInput }></DefNode>
+    ));
+  }
+      
 
   render() {
     return (
@@ -46,7 +58,7 @@ class DefTree extends React.Component<Props, State> {
             <Icon svgSrc={ newIcon } width="20px" height="20px"></Icon>
           </div>
         </li>
-        <DefNode onSelectChange={ this.props.onSelectChange } onTextChange={ this.props.onTextChange } selectedItem={ this.props.selectedItem } initialTextValue={ this.props.initialTextValue } isOpen={ this.state.isDefNodeOpen } initialSearchInput={ this.props.initialSearchInput }></DefNode>
+        { this.renderDefNodes() }
       </ul>
     );
   }

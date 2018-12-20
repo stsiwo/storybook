@@ -2,26 +2,10 @@ import * as React from 'react';
 import styled from '../../styledComponents';
 import TextWIcon from '../InputText/TextWIcon';
 import DefTree from './DefTree';
-import { posItem } from '../PosSelect/posItems';
 
 const wordIcon = require('./assets/word.svg');
 
-interface IWord {
-  name: string;
-  defs: IDef[]; 
-} 
-
-interface ImageIF {
-  name: string;
-  src: string;
-}
-
-interface IDef {
-  pos: posItem[];
-  def: string;
-  image: ImageIF;
-}
-
+import { IWord, IDef } from './sampleWord';
 
 interface Props {
   className?: string;
@@ -58,7 +42,7 @@ class WordForm extends React.Component<Props, State> {
       <form className={ this.props.className }>
         <TextWIcon placeholder="enter a new word here..." svgSrc={ wordIcon } labelName="word-text" onChange={ this.handleWordNameChange } value={ this.state.name }></TextWIcon>
         <p>let’s define as many definitions of the word as you want :)</p>
-        <DefTree ></DefTree>
+        <DefTree defs={ this.state.defs } initialSearchInput={ this.state.name }></DefTree>
       </form>
     );
   }
@@ -66,6 +50,7 @@ class WordForm extends React.Component<Props, State> {
 
 const StyledWordForm = styled(WordForm)`
 
+  
 `;
 
 

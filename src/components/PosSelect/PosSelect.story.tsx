@@ -10,5 +10,5 @@ const tempFunc: (e: React.ChangeEvent<HTMLSelectElement>) => void = (e) => {};
 
 storiesOf('Select', module)
   .addDecorator(( story ) => <ThemeDecorator>{ story() }</ThemeDecorator>) 
-  .add("Select component", () => <Select items={ posItems } selectedItem={ posItems[0] } labelName={ labelName } onChange={tempFunc}>Def.</Select>)
+  .add("Select component", () => <Select items={ posItems } pos={ posItems[0] } labelName={ labelName } onChange={tempFunc}>Def.</Select>)
 
