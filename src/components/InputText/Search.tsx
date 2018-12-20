@@ -41,6 +41,7 @@ const StyledSearch = styled(Search)`
   border-radius: 15px;
   height: 30px;
   width: 80%;
+  margin: 10px auto;
 
   display: flex;
   align-items: center;
