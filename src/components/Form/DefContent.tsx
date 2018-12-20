@@ -3,6 +3,7 @@ import styled from '../../styledComponents';
 import Select from '../PosSelect/Select';
 import Text from '../InputText/Text';
 import { posItems, posItem } from '../PosSelect/posItems';
+import File from '../InputText/File';
 
 interface Props {
   className?: string;
@@ -33,7 +34,7 @@ class DefContent extends React.Component<Props, {}> {
           <Text onChange={ this.props.onTextChange } placeholder="enter your definition here..." labelName="def" value={ this.props.initialTextValue }>Def</Text>
         </li>
         <li>
-          <img src="" alt="def image here..." />
+          <File labelName="def-upload-image" /> 
         </li>
       </ul>
     );

@@ -52,7 +52,7 @@ class File extends React.Component<Props, State> {
           <Icon svgSrc={ uploadImageIcon } />
         </label>
         <input type="file" id={ this.props.labelName } name={ this.props.labelName } accept="image/*" onChange={ this.handleChange }/>
-        <img src={ this.state.currentImage } width="300px" height="300px" ref={this.preview} onLoad={ this.releaseObjectURL }></img>
+        <img src={ this.state.currentImage } ref={this.preview} onLoad={ this.releaseObjectURL }></img>
       </div>
     );
   }
@@ -61,6 +61,11 @@ class File extends React.Component<Props, State> {
 const StyledFile = styled(File)`
   & > input {
     display: none;
+  }
+
+  & > img {
+    width: 100px;
+    height: 70px;
   }
   
 

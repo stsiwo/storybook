@@ -5,8 +5,6 @@ import DefContent from './DefContent';
 import { posItem } from '../PosSelect/posItems';
 
 const arrowIcon = require('./assets/rightArrow.svg');
-const searchImageIcon = require('./assets/searchImage.svg');
-const uploadImageIcon = require('./assets/uploadImage.svg');
 const deleteIcon = require('./assets/delete.svg');
 
 interface Props {
@@ -45,12 +43,6 @@ class DefNode extends React.Component<Props, State> {
             <h4>Definition</h4>
           </div>
           <div>
-            <Icon svgSrc={ searchImageIcon } width="20px" height="20px"></Icon>
-            <label>
-              Upload file:
-              <input type="file" accept="image/*" />
-            </label> 
-            <Icon svgSrc={ uploadImageIcon } width="20px" height="20px"></Icon>
             <Icon svgSrc={ deleteIcon } width="20px" height="20px"></Icon>
           </div>
         </li>
