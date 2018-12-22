@@ -22,9 +22,10 @@ class BottomModal extends React.Component<Props, {}> {
     return (
       <div className={ this.props.className } onClick={ this.props.handleSearchImageToggleClick }>
         <div onClick={ this.handleClick }>
-          <form method="dialog">
+          
+          <div>
             { this.props.children }
-          </form>
+          </div>
         </div>
       </div>
     );

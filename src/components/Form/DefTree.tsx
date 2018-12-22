@@ -17,6 +17,7 @@ interface Props {
   className?: string;
   initialSearchInput: string; // word name for initial search input
   defs: IDef[]; 
+  onDefsChange: (newDefs: IDef[]) => void;
 }
 
 interface State {
@@ -32,6 +33,7 @@ class DefTree extends React.Component<Props, State> {
       defs: this.props.defs,
     }
     this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.handleDefsState = this.handleDefsState.bind(this);
   }
 
   handleToggleClick(e: React.MouseEvent<HTMLElement>) {
@@ -39,12 +41,19 @@ class DefTree extends React.Component<Props, State> {
     this.setState({ isDefNodeOpen : !currentToggleStatus });  
   }
 
+  handleDefsState() {
+    const currentDefs = this.state.defs;
+    // change the defs state of parent (Deftree) 
+    this.props.onDefsChange(currentDefs);
+  }
+
+
   renderDefNodes() {
-    return this.state.defs.map(( eachDef ) => ( 
-      <DefNode pos={ eachDef.pos } def={ eachDef.def} image={ eachDef.image } isOpen={ this.state.isDefNodeOpen } initialSearchInput={ this.props.initialSearchInput }></DefNode>
+    // fix key = index when implementing api to def id
+    return this.state.defs.map(( eachDef, index ) => ( 
+      <DefNode key={ index } pos={ eachDef.pos } def={ eachDef.def} image={ eachDef.image } isOpen={ this.state.isDefNodeOpen } initialSearchInput={ this.props.initialSearchInput }></DefNode>
     ));
   }
-      
 
   render() {
     return (
@@ -66,7 +75,7 @@ class DefTree extends React.Component<Props, State> {
 
 const StyledDefTree = styled(DefTree)`
 
-  padding-inline-start: 20px;
+  padding-inline-start: 0;
 
   & ul {
     padding-inline-start: 20px;

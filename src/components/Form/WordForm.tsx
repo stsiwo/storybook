@@ -27,6 +27,7 @@ class WordForm extends React.Component<Props, State> {
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleWordNameChange = this.handleWordNameChange.bind(this);
+    this.handleDefsState = this.handleDefsState.bind(this);
   }
 
   handleClick(e: React.MouseEvent<HTMLElement>) {
@@ -37,18 +38,23 @@ class WordForm extends React.Component<Props, State> {
     this.setState({ name: e.target.value }); 
   }
 
+  handleDefsState(newDefs: IDef[]) {
+    this.setState({ defs: newDefs });
+  }
+
   render() {
     return (
       <form className={ this.props.className }>
         <TextWIcon placeholder="enter a new word here..." svgSrc={ wordIcon } labelName="word-text" onChange={ this.handleWordNameChange } value={ this.state.name }></TextWIcon>
         <p>let’s define as many definitions of the word as you want :)</p>
-        <DefTree defs={ this.state.defs } initialSearchInput={ this.state.name }></DefTree>
+        <DefTree defs={ this.state.defs } initialSearchInput={ this.state.name } onDefsChange={ this.handleDefsState }></DefTree>
       </form>
     );
   }
 }
 
 const StyledWordForm = styled(WordForm)`
+  padding: 10px;
 
   
 `;
