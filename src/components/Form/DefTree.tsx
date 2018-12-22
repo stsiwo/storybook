@@ -3,26 +3,22 @@ import styled from '../../styledComponents';
 import Icon from '../Icon/Icon';
 import DefNode from './DefNode';
 import { posItem } from '../PosSelect/posItems';
+import { IDef } from './sampleWord';
 
 const arrowIcon = require('./assets/rightArrow.svg');
 const newIcon = require('./assets/new.svg');
-
-interface IDef {
-  pos: posItem;
-  def: string;
-  image: string;
-}
 
 interface Props {
   className?: string;
   initialSearchInput: string; // word name for initial search input
   defs: IDef[]; 
-  onDefsChange: (newDefs: IDef[]) => void;
+  onDefChange: (newValue: posItem, targetId: number, property: string) => void;
+  onNewDefClick: () => void;
+  onDeleteDefClick: (targetId: number) => void;
 }
 
 interface State {
   isDefNodeOpen: boolean;
-  defs: IDef[];
 }
 
 class DefTree extends React.Component<Props, State> {
@@ -30,10 +26,9 @@ class DefTree extends React.Component<Props, State> {
     super(props);
     this.state = {
       isDefNodeOpen: true,
-      defs: this.props.defs,
     }
     this.handleToggleClick = this.handleToggleClick.bind(this);
-    this.handleDefsState = this.handleDefsState.bind(this);
+    this.handleNewDefClick = this.handleNewDefClick.bind(this);
   }
 
   handleToggleClick(e: React.MouseEvent<HTMLElement>) {
@@ -41,17 +36,13 @@ class DefTree extends React.Component<Props, State> {
     this.setState({ isDefNodeOpen : !currentToggleStatus });  
   }
 
-  handleDefsState() {
-    const currentDefs = this.state.defs;
-    // change the defs state of parent (Deftree) 
-    this.props.onDefsChange(currentDefs);
+  handleNewDefClick() {
+    this.props.onNewDefClick();
   }
 
-
   renderDefNodes() {
-    // fix key = index when implementing api to def id
-    return this.state.defs.map(( eachDef, index ) => ( 
-      <DefNode key={ index } pos={ eachDef.pos } def={ eachDef.def} image={ eachDef.image } isOpen={ this.state.isDefNodeOpen } initialSearchInput={ this.props.initialSearchInput }></DefNode>
+    return this.props.defs.map(( eachDef ) => ( 
+      <DefNode key={ eachDef.id } def={ eachDef } isOpen={ this.state.isDefNodeOpen } initialSearchInput={ this.props.initialSearchInput } onDefChange={ this.props.onDefChange } onDeleteDefClick={ this.props.onDeleteDefClick }></DefNode>
     ));
   }
 
@@ -64,7 +55,7 @@ class DefTree extends React.Component<Props, State> {
             <h3>definition list</h3>
           </div>
           <div>
-            <Icon svgSrc={ newIcon } width="20px" height="20px"></Icon>
+            <Icon svgSrc={ newIcon } onClick={ this.handleNewDefClick } width="20px" height="20px"></Icon>
           </div>
         </li>
         { this.renderDefNodes() }

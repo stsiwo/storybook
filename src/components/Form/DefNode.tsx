@@ -3,29 +3,22 @@ import styled from '../../styledComponents';
 import Icon from '../Icon/Icon';
 import DefContent from './DefContent';
 import { posItem, posItems } from '../PosSelect/posItems';
+import { IDef } from './sampleWord';
 
 const arrowIcon = require('./assets/rightArrow.svg');
 const deleteIcon = require('./assets/delete.svg');
 
-//interface ImageIF {
-  //name: string;
-  //src: string;
-//}
-
 interface Props {
   className?: string;
-  def: string;
-  pos: posItem;
-  image: string;
+  def: IDef;
   isOpen: boolean;
   initialSearchInput: string;
+  onDefChange: (newValue: posItem | string, targetId: number, property: string) => void;
+  onDeleteDefClick: (targetId: number) => void;
 }
 
 interface State {
   isDefContentOpen: boolean;
-  pos: posItem;
-  def: string;
-  image: string; 
 }
 
 class DefNode extends React.Component<Props, State> {
@@ -33,13 +26,11 @@ class DefNode extends React.Component<Props, State> {
     super(props);
     this.state = {
       isDefContentOpen: true,
-      pos: this.props.pos,
-      def: this.props.def,
-      image: this.props.image,
     }
     this.handleToggleClick = this.handleToggleClick.bind(this);
     this.handlePosSelectChange = this.handlePosSelectChange.bind(this);
     this.handleDefTextChange = this.handleDefTextChange.bind(this);
+    this.handleDeleteDefClick = this.handleDeleteDefClick.bind(this);
   }
 
   handleToggleClick(e: React.MouseEvent<HTMLElement>) {
@@ -49,11 +40,15 @@ class DefNode extends React.Component<Props, State> {
 
   handlePosSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const targetPosItem = posItems.find(( pos ) => pos.value === e.target.value);
-    this.setState({ pos: targetPosItem }); 
+    this.props.onDefChange(targetPosItem, this.props.def.id, 'pos');
   }
 
   handleDefTextChange(e: React.ChangeEvent<HTMLInputElement>) {
-      this.setState({ def: e.target.value });
+    this.props.onDefChange(e.target.value, this.props.def.id, 'def');
+  }
+
+  handleDeleteDefClick() {
+    this.props.onDeleteDefClick(this.props.def.id);
   }
 
   render() {
@@ -65,10 +60,10 @@ class DefNode extends React.Component<Props, State> {
             <h4>Definition</h4>
           </div>
           <div>
-            <Icon svgSrc={ deleteIcon } width="20px" height="20px"></Icon>
+            <Icon svgSrc={ deleteIcon } onClick={ this.handleDeleteDefClick } width="20px" height="20px"></Icon>
           </div>
         </li>
-        <DefContent onSelectChange={ this.handlePosSelectChange } onTextChange={ this.handleDefTextChange } pos={ this.props.pos } def={ this.props.def } image={ this.props.image } isOpen={this.state.isDefContentOpen } initialSearchInput={ this.props.initialSearchInput }/>
+        <DefContent onSelectChange={ this.handlePosSelectChange } onTextChange={ this.handleDefTextChange } def={ this.props.def } isOpen={this.state.isDefContentOpen } initialSearchInput={ this.props.initialSearchInput }/>
       </ul>
     );
   }

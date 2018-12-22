@@ -2,10 +2,11 @@ import * as React from 'react';
 import styled from '../../styledComponents';
 import TextWIcon from '../InputText/TextWIcon';
 import DefTree from './DefTree';
+import { posItem, posItems } from '../PosSelect/posItems';
 
 const wordIcon = require('./assets/word.svg');
 
-import { IWord, IDef } from './sampleWord';
+import { IWord, IDef, Def } from './sampleWord';
 
 interface Props {
   className?: string;
@@ -27,7 +28,9 @@ class WordForm extends React.Component<Props, State> {
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleWordNameChange = this.handleWordNameChange.bind(this);
-    this.handleDefsState = this.handleDefsState.bind(this);
+    this.handleDefChange = this.handleDefChange.bind(this);
+    this.handleNewDefClick = this.handleNewDefClick.bind(this);
+    this.handleDeleteDefClick = this.handleDeleteDefClick.bind(this);
   }
 
   handleClick(e: React.MouseEvent<HTMLElement>) {
@@ -38,8 +41,55 @@ class WordForm extends React.Component<Props, State> {
     this.setState({ name: e.target.value }); 
   }
 
-  handleDefsState(newDefs: IDef[]) {
-    this.setState({ defs: newDefs });
+  handleNewDefClick() {
+    const currentDefs = this.state.defs;
+    // need to fix later esp id stuff 
+    currentDefs.push(new Def(10, posItems[0]));
+
+    this.setState({ defs: [...currentDefs] });
+  }
+
+  handleDeleteDefClick(targetDefId: number) {
+    const currentDefs = this.state.defs;
+    // slice function returns shallow copy of original
+    const newDefs = currentDefs.filter(( def ) => def.id !== targetDefId );
+
+    this.setState({ defs: newDefs }); 
+  }
+
+
+    
+  handleDefChange(newValue: posItem | string, targetDefId: number, property: string ) {
+    const currentDefs = this.state.defs;
+
+    // map function return new array so it's immutable
+    const nextDefs = currentDefs.map(( def ) => {
+      if ( def.id === targetDefId ) {
+        def[property] = newValue;
+      }
+      return def;
+    });
+
+    this.setState({ defs: nextDefs });
+    
+    //const testArray = [1, 2,3,4,5,6];
+    //console.log(...testArray);
+    //const testObject = {
+      //name: 'a',
+      //prop1: 'b',
+      //prop2: 'b',
+      //[Symbol.iterator]: function* () {
+        //let properties = Object.keys(this);
+        //for (let i of properties) {
+          //yield [i, this[i]];
+        //}
+      //}
+    //};
+    //const overrideObject = {
+      //...testObject,
+      //name: 'override',
+    //};
+    //console.log(...overrideObject);
   }
 
   render() {
@@ -47,7 +97,7 @@ class WordForm extends React.Component<Props, State> {
       <form className={ this.props.className }>
         <TextWIcon placeholder="enter a new word here..." svgSrc={ wordIcon } labelName="word-text" onChange={ this.handleWordNameChange } value={ this.state.name }></TextWIcon>
         <p>let’s define as many definitions of the word as you want :)</p>
-        <DefTree defs={ this.state.defs } initialSearchInput={ this.state.name } onDefsChange={ this.handleDefsState }></DefTree>
+        <DefTree defs={ this.state.defs } initialSearchInput={ this.state.name } onDefChange={ this.handleDefChange } onNewDefClick={ this.handleNewDefClick } onDeleteDefClick={ this.handleDeleteDefClick }></DefTree>
       </form>
     );
   }

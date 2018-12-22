@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist/",
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "lib": ["es5", "es6", "es7", "es2017", "dom"],
     "sourceMap": true,
     "allowJs": false,
@@ -20,7 +20,8 @@
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "downlevelIteration": true, // enable object reset spread
   },
   "include": ["src/**/*", "assets.d.ts"],
   "exclude": ["node_modules", "build", "scripts"]
